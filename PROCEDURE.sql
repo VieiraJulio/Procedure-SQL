@@ -16,7 +16,7 @@ EXECUTE prOrderGerente
 --
 
 
-CREATE OR ALTER PROCEDURE prListarClientes(@gen = 'M' VARCHAR(MAX), @ano INT)
+CREATE OR ALTER PROCEDURE prListarClientes(@gen VARCHAR(MAX) = 'M', @ano INT)
 AS
 BEGIN
 	SELECT
@@ -25,4 +25,4 @@ BEGIN
 	WHERE genero = @gen AND YEAR(data_de_nascimento) = @ano
 END 
 
-EXECUTE prListarClientes 'M'
+EXECUTE prListarClientes @ano = 1989
