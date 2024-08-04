@@ -85,3 +85,19 @@ END
 EXECUTE prMarca 'Contoso'
 
 */
+
+CREATE OR ALTER PROCEDURE prTopN(@topn INT)
+AS
+BEGIN
+	SELECT
+		TOP (@topn)
+		FirstName, 
+		DateFirstPurchase	
+	FROM
+		DimCustomer
+	WHERE CustomerType = 'Person'
+	ORDER BY DateFirstPurchase
+END 
+
+
+EXECUTE prTopN 100
