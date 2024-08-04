@@ -26,7 +26,7 @@ END
 
 EXECUTE prListarClientes @ano = 1989
 
-*/
+
 
 CREATE OR ALTER PROCEDURE prRegistraContrato(@gerente VARCHAR(MAX), @cliente VARCHAR(MAX), @valor FLOAT)
 AS
@@ -63,3 +63,25 @@ SELECT
 	*
 FROM
 	fContratos
+
+
+
+
+USE ContosoRetailDW
+
+CREATE OR ALTER PROCEDURE prMarca(@marca VARCHAR(MAX))
+AS
+BEGIN
+
+	SELECT 
+		BrandName,
+		COUNT(*) AS 'Quantidade Produtos por Marca'
+	FROM DimProduct	
+	WHERE BrandName = @marca
+	GROUP BY BrandName 
+
+END
+
+EXECUTE prMarca 'Contoso'
+
+*/
